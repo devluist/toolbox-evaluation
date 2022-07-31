@@ -4,12 +4,17 @@
   "description": "Evaluation App for Toolbox made by Luis Tena",
   "main": "index.js",
   "scripts": {
-    "test": "standard && node tests/index.js",
+    "test": "mocha",
     "start": "node index.js"
   },
   "author": "Luis Tena",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0"
   }
 }

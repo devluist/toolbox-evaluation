@@ -10,6 +10,32 @@ BigInt.prototype.toJSON = function () {
     return this.toString();
 };
 
+app.get('/files/list', (req, res, next) => {
+
+    const options = {
+        method: "GET",
+        headers: {
+            // This was explicitly required on the PDF "REQUISITOS TÉCNICOS API"
+            // "no depender de [...] variables de entorno"
+            Authorization: "Bearer aSuperSecretKey" 
+        }
+    }
+
+        https.request(API_URL, options, externalRes => {
+            let data = "";
+            externalRes.on("data", chunk => data += chunk)
+
+            externalRes.on("end", () => {
+                if (data){
+                    data = JSON.parse(data).files;
+                }
+
+                res.json(data)
+            })
+        })
+        .end()
+})
+
 app.get('/files/data', (req, res, next) => {
 
     let { fileName } = req.query;
@@ -104,6 +130,10 @@ function csvResponseHandler(csvRes, filesFetcher, res, next, processed = 1, amou
                     // if the amount of files processed is equal to the amount of files requested
                     // then it's time to send the response to the client
                     if(processed === amountFiles){
+                        if(amountFiles === 1 && filesFetcher.length === 1){
+                            filesFetcher = filesFetcher[0]
+                        }
+
                         // dangerous but required for localhost testing
                         res.setHeader("Access-Control-Allow-Origin", "*" )
                         res.json(filesFetcher)
@@ -111,7 +141,6 @@ function csvResponseHandler(csvRes, filesFetcher, res, next, processed = 1, amou
                 }    
             }
             else {
-                console.log(csvRes)
                 // if user only requested one file, then throw an error, otherwise let it work with the good ones
                 if(amountFiles === 1){
                     next({message: "Empty File", status: 200})    
