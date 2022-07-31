@@ -6,14 +6,14 @@ import "./FilesList.css";
 
 const API_URL = "http://localhost:3500/files/data";
 
-export default function FilesList() {
+export default function FilesList () {
 
 	const [csvList, setCSVList] = useState([]);
-	const [query, setQuery] = useState(null);
+	const [query, setQuery] = useState('');
 
 	const fetchAPI = async (query = null) => {
 		let API = API_URL;
-		if(query){
+		if (query) {
 			API += ("?fileName=" + query)
 		}
 
@@ -23,7 +23,7 @@ export default function FilesList() {
 				// since I added a single object response when specific file is request
 				// I need now to return as an array that single object, to ease table building procedure
 				if(query)
-					setCSVList([await fetched.json()]);
+					setCSVList([ await fetched.json() ]);
 				else
 					setCSVList(await fetched.json());
 			}	
@@ -35,7 +35,7 @@ export default function FilesList() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		fetchAPI(query);
-		setQuery(null);
+		setQuery('');
 	}
 
 	useEffect(() => {

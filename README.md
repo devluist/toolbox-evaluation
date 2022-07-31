@@ -29,3 +29,25 @@ Posibles mejoras al cliente:
 
 - filtrar por nombre de archivo en el cliente react. Para ello agregue un input donde me pareció conveniente a falta de diseño para el mismo.
 
+- implemente el levantamiento del API y el Cliente con Docker, sin embargo mi experiencia es muy basica con Docker, para no seguir retrasando la entrega de este proyecto no complete el docker-compose, me estaba dando problemas el enrutado del API con el nginx.
+
+
+
+### Para usar docker con este proyecto
+
+#### Cliente
+
+`cd client`
+
+`docker build -f Dockerfile -t client .`
+
+`docker run -it -p 3000:3000 client`
+
+
+#### API
+
+`cd api`
+
+`docker build -f Dockerfile -t api .`
+
+`docker run -it -p 3500:3500 api`
