@@ -18,6 +18,7 @@ Posibles mejoras en API:
 Posibles mejoras al cliente:
 - Usar jest, que por tiempo no pude completar.
 
+- Mejorar el formulario de busqueda
 
 
 #### Los puntos opcionales que pude implementar:
@@ -29,7 +30,7 @@ Posibles mejoras al cliente:
 
 - filtrar por nombre de archivo en el cliente react. Para ello agregue un input donde me pareció conveniente a falta de diseño para el mismo.
 
-- implemente el levantamiento del API y el Cliente con Docker, sin embargo mi experiencia es muy basica con Docker, para no seguir retrasando la entrega de este proyecto no complete el docker-compose, me estaba dando problemas el enrutado del API con el nginx.
+- implemente el levantamiento del API y el Cliente con Docker, sin embargo mi experiencia es muy basica con Docker, para no seguir retrasando la entrega de este proyecto no completé el docker-compose. Me estaba dando problemas el enrutado del API con el nginx.
 
 
 

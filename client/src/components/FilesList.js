@@ -11,7 +11,7 @@ export default function FilesList () {
 	const [csvList, setCSVList] = useState([]);
 	const [query, setQuery] = useState('');
 
-	const fetchAPI = async (query = null) => {
+	const fetchAPI = async (query = '') => {
 		let API = API_URL;
 		if (query) {
 			API += ("?fileName=" + query)
@@ -43,8 +43,8 @@ export default function FilesList () {
 	}, [])
 
 	const renderedList = csvList.map( file => {
-			return file.lines.map( line =>
-				<tr>
+			return file.lines.map( (line, idx) =>
+				<tr key={ idx + line.hex } >
 					<td>{ file.file }</td>
 					<td>{ line.text }</td>
 					<td>{ line.number }</td>
