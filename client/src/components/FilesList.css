@@ -1,0 +1,19 @@
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.query-input {
+    display: flex;
+}
+
+.table-container {
+	display: flex;
+	justify-content: center;
+}
+
+.table {
+	width: 90%;
+}

@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FilesList from "./FilesList";
+import FilesList from "./components/FilesList";
 import "./App.css";
 
 
